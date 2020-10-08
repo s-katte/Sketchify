@@ -16,6 +16,9 @@ Contribute to this project, whether it's:
 ### Making a PR
 
 * Fork the repo and clone it on your machine.
+* Fireup a terminal in current repo's directory.
+* Run the command  ``` npm install``` to install all the dependencies.
+
 * Add a upstream link to main branch in your cloned repo
     ```
     git remote add upstream 
@@ -37,6 +40,16 @@ Contribute to this project, whether it's:
     git push origin <branch-name>
     ```
 * Create a PR from our repo on Github.
+* Format your PR likewise: 
+> [Tag]: Describe changes made
+
+Tag can be:
+- Feat (new Feature)
+- Fix (bug fix)
+- Refactor (refactoring code)
+- Style (formatting, no code change)
+- Doc (changes to documentation)
+- Test (adding or refactoring tests; no production code change)
 
 ### Additional Notes
 
@@ -60,8 +73,3 @@ When you are creating an issue, make sure it's not already present. Furthermore,
   - What you expected would happen
   - What actually happens
   - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
-
-
-## References
-
-This document was adapted from the open-source contribution guidelines for [Facebook's Draft](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
