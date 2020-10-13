@@ -24,8 +24,8 @@ function App() {
   }, [html, css, js]);
 
   return (
-    <>
-      <Split className="pane top-pane" sizes={[33, 33, 33]}>
+    <Split sizes={[50, 50]} direction="vertical" className="h-100">
+      <Split className="pane top-pane" sizes={[33, 34, 33]}>
         <Editor
           language="xml"
           displayName="HTML"
@@ -55,7 +55,7 @@ function App() {
           height="100%"
         />
       </div>
-    </>
+    </Split>
   );
 }
 
