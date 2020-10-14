@@ -17,7 +17,7 @@
 ## Usage
 1. Clone the project.
 2. Fireup the terminal in the project directory.
-3. Install all the dependencied by running ```npm install``` in the terminal.
+3. Install all the dependencies by running ```npm install``` in the terminal.
 4. Run ```npm start``` to run the project.
 5. Start building great stuff :smile:.
 6. Star the repo if you like it :star:.
