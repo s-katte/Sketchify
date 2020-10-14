@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
+import Split from 'react-split';
 
 function App() {
   const [html, setHtml] = useLocalStorage("html", "");
@@ -23,8 +24,8 @@ function App() {
   }, [html, css, js]);
 
   return (
-    <>
-      <div className="pane top-pane">
+    <Split sizes={[50, 50]} direction="vertical" className="h-100">
+      <Split className="pane top-pane" sizes={[33, 34, 33]}>
         <Editor
           language="xml"
           displayName="HTML"
@@ -43,7 +44,7 @@ function App() {
           value={js}
           onChange={setJs}
         />
-      </div>
+      </Split>
       <div className="pane">
         <iframe
           srcDoc={srcDoc}
@@ -54,7 +55,7 @@ function App() {
           height="100%"
         />
       </div>
-    </>
+    </Split>
   );
 }
 
