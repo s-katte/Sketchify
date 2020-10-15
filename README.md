@@ -27,4 +27,4 @@ Head over to [CONTRIBUTING.md](https://github.com/s-katte/React-Code-Pen/blob/ma
 
 ## Preview
 
-![](<https://github.com/s-katte/React-Code-Pen/blob/master/Screenshots/ss-1.png>)
+![](<https://github.com/s-katte/React-Code-Pen/blob/master/Screenshots/ss-1.svg>)
