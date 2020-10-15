@@ -3,6 +3,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/github/issues/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
+    <img src="https://img.shields.io/github/issues-closed/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
     <img src="https://img.shields.io/github/forks/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
     <img src="https://img.shields.io/github/stars/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
 <!--     <img src="https://img.shields.io/github/license/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal"> -->
