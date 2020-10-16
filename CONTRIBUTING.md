@@ -16,6 +16,7 @@ Contribute to this project, whether it's:
 ### Making a PR
 
 * Fork the repo and clone it on your machine.
+* Enable Github Actions under the ```Actions``` tab of your forked repo to pass all CI checks.
 * Fireup a terminal in current repo's directory.
 * Run the command  ``` npm install``` to install all the dependencies.
 
