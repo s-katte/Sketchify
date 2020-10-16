@@ -13,8 +13,8 @@ jobs:
                   node-version: "12.x"
             - name: Format
               run: |
-                  yarn install --frozen-lockfile
-                  yarn run format
+                  npm ci
+                  npm run format
             - name: Commit changes
               uses: stefanzweifel/git-auto-commit-action@v4
               with:
