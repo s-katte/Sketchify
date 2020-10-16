@@ -22,6 +22,13 @@ function App() {
 
     return () => clearTimeout(timeout);
   }, [html, css, js]);
+  
+  useEffect(()=>{
+      window.addEventListener("beforeunload", (ev) => {
+        ev.preventDefault();
+        return ev.returnValue = 'Changes you made will not be saved.';
+      });
+  })
 
   return (
     <Split sizes={[50, 50]} direction="vertical" className="h-100">
