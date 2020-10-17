@@ -1,44 +1,44 @@
 {
-  "name": "react-code-pen",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "codemirror": "^5.57.0",
-    "jquery": "^3.5.1",
-    "prettier": "2.1.2",
-    "react": "^16.13.1",
-    "react-codemirror2": "^7.2.1",
-    "react-dom": "^16.13.1",
-    "react-jqueryui": "^0.1.0",
-    "react-scripts": "3.4.3",
-    "react-split": "^2.0.9"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --config ./.prettierrc.json --ignore-path ./.prettierignore --write ."
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "react-code-pen",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.30",
+        "@fortawesome/free-solid-svg-icons": "^5.14.0",
+        "@fortawesome/react-fontawesome": "^0.1.11",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "codemirror": "^5.57.0",
+        "jquery": "^3.5.1",
+        "prettier": "2.1.2",
+        "react": "^16.13.1",
+        "react-codemirror2": "^7.2.1",
+        "react-dom": "^16.13.1",
+        "react-jqueryui": "^0.1.0",
+        "react-scripts": "3.4.3",
+        "react-split": "^2.0.9"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "format": "prettier --config ./.prettierrc.json --ignore-path ./.prettierignore --write ."
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }

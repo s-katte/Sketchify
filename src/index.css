@@ -1,89 +1,91 @@
-html, body, #root {
-  margin: 0;
-  height: 100%;
+html,
+body,
+#root {
+    margin: 0;
+    height: 100%;
 }
 
 .top-pane {
-  background-color: hsl(225, 6%, 25%);
+    background-color: hsl(225, 6%, 25%);
 }
 
 .pane {
-  height: 50vh;
-  display: flex;
+    height: 50vh;
+    display: flex;
 }
 
 .editor-container {
-  display: flex;
-  flex-direction: column;
-  background-color: hsl(225, 6%, 25%);
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(225, 6%, 25%);
 }
 
-.h-100{
-  height: 100% !important;
+.h-100 {
+    height: 100% !important;
 }
 
-.gutter{
-  position: relative;
+.gutter {
+    position: relative;
 }
-.gutter::after{
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.gutter::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
-.gutter.gutter-horizontal{
-  width: 15px;
-  cursor: ew-resize;
+.gutter.gutter-horizontal {
+    width: 15px;
+    cursor: ew-resize;
 }
-.gutter.gutter-horizontal::after{
-  content: '\f142';
+.gutter.gutter-horizontal::after {
+    content: "\f142";
 }
-.gutter.gutter-vertical{
-  height: 10px;
-  background:hsl(0, 0%, 33%);
-  cursor: ns-resize;
+.gutter.gutter-vertical {
+    height: 10px;
+    background: hsl(0, 0%, 33%);
+    cursor: ns-resize;
 }
-.gutter.gutter-vertical::after{
-  content: '\f141';
+.gutter.gutter-vertical::after {
+    content: "\f141";
 }
 
 .editor-container.collapsed {
-  flex-grow: 0;
-  width: 10% !important;
+    flex-grow: 0;
+    width: 10% !important;
 }
 
 .editor-container.collapsed .CodeMirror-scroll {
-  position: absolute;
-  overflow: hidden !important;
+    position: absolute;
+    overflow: hidden !important;
 }
 
 .expand-collapse-btn {
-  margin-left: 0.5rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
+    margin-left: 0.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 .editor-title {
-  display: flex;
-  justify-content: space-between;
-  background-color: hsl(225, 6%, 13%);
-  color: white;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: hsl(225, 6%, 13%);
+    color: white;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
 }
 
 .CodeMirror {
-  height: 100% !important;
+    height: 100% !important;
 }
 
 .code-mirror-wrapper {
-  flex-grow: 1;
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  overflow: hidden;
+    flex-grow: 1;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    overflow: hidden;
 }
