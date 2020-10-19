@@ -16,7 +16,7 @@ function App() {
             <html>
                 <head><link rel="stylesheet" href="./styles.css"></head>
                 <body>${html}</body>
-                <script src="./script.js" />
+                <script src="./script.js"></script>
             </html>
             `;
         let link = document.getElementById("download-btn-html");
