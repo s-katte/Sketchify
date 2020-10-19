@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
-import { type } from "jquery";
 
 function App() {
     const [html, setHtml] = useLocalStorage("html", "");
@@ -13,11 +12,17 @@ function App() {
     // HTML
     const downloadHtml = () => {
         let htmlContent = `
-            <html>
-                <head><link rel="stylesheet" href="./styles.css"></head>
-                <body>${html}</body>
-                <script src="./script.js"></script>
-            </html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Document</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>${html}</body>
+    <script src="./script.js"></script>
+</html>
             `;
         let link = document.getElementById("download-btn-html");
         let file = new Blob([htmlContent], {type: "html"});

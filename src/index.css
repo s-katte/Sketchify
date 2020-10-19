@@ -99,7 +99,7 @@ body,
 .download-btn-container a{
     text-decoration: none;
     padding: 0.4rem 0.8rem;
-    background: rgb(0, 110, 255);
+    background: #3C3E44;
     color: white;
     border-radius: 2px;
     opacity: 0.25;
