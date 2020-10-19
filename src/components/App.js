@@ -9,6 +9,48 @@ function App() {
     const [js, setJs] = useLocalStorage("js", "");
     const [srcDoc, setSrcDoc] = useState("");
 
+    // HTML
+    const downloadHtml = () => {
+        let htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Document</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>${html}</body>
+    <script src="./script.js"></script>
+</html>
+            `;
+        let link = document.getElementById("download-btn-html");
+        let file = new Blob([htmlContent], {type: "html"});
+        let downloadFile = "index.html";
+        link.target = "_blank";
+        link.href = URL.createObjectURL(file);
+        link.download = downloadFile;
+    }
+    const downloadCss = () => {
+        // CSS
+        let cssLink = document.getElementById("download-btn-css");
+        let cssFile = new Blob([css], {type: "css"});
+        let cssDownloadFile = "styles.css";
+        cssLink.target = "_blank";
+        cssLink.href = URL.createObjectURL(cssFile);
+        cssLink.download = cssDownloadFile;
+    }
+    const downloadJs = () => {
+        // JS
+        let jsLink = document.getElementById("download-btn-js");
+        let jsFile = new Blob([js], {type: "js"});
+        let jsDownloadFile = "script.js";
+        jsLink.target = "_blank";
+        jsLink.href = URL.createObjectURL(jsFile);
+        jsLink.download = jsDownloadFile;
+    }
+
+
     useEffect(() => {
         const timeout = setTimeout(() => {
             setSrcDoc(`
@@ -53,6 +95,11 @@ function App() {
                 />
             </Split>
             <div className="pane">
+                <div className="download-btn-container">
+                    <a href=" " id="download-btn-html" onClick={downloadHtml}>HTML</a>
+                    <a href=" " id="download-btn-css" onClick={downloadCss}>CSS</a>
+                    <a href=" " id="download-btn-js" onClick={downloadJs}>JS</a>
+                </div>
                 <iframe
                     srcDoc={srcDoc}
                     title="output"
