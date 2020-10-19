@@ -15,6 +15,7 @@
 -   Changes persisted throughout the browser.
 -   Clean Editor.
 -   Flexible windows.
+-   Downloadable html, css and js files.
 
 ## Usage
 
