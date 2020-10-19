@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
+import { type } from "jquery";
 
 function App() {
     const [html, setHtml] = useLocalStorage("html", "");
@@ -9,13 +10,39 @@ function App() {
     const [js, setJs] = useLocalStorage("js", "");
     const [srcDoc, setSrcDoc] = useState("");
 
-    const downloadFrame = () => {
-        let content = srcDoc;
-        var link = document.getElementById("download-btn");
-        var file = new Blob([content], {type: "html"});
-        var donwloadFile = "index.html";
+    // HTML
+    const downloadHtml = () => {
+        let htmlContent = `
+            <html>
+                <head><link rel="stylesheet" href="./styles.css"></head>
+                <body>${html}</body>
+                <script src="./script.js" />
+            </html>
+            `;
+        let link = document.getElementById("download-btn-html");
+        let file = new Blob([htmlContent], {type: "html"});
+        let downloadFile = "index.html";
+        link.target = "_blank";
         link.href = URL.createObjectURL(file);
-        link.download = donwloadFile;
+        link.download = downloadFile;
+    }
+    const downloadCss = () => {
+        // CSS
+        let cssLink = document.getElementById("download-btn-css");
+        let cssFile = new Blob([css], {type: "css"});
+        let cssDownloadFile = "styles.css";
+        cssLink.target = "_blank";
+        cssLink.href = URL.createObjectURL(cssFile);
+        cssLink.download = cssDownloadFile;
+    }
+    const downloadJs = () => {
+        // JS
+        let jsLink = document.getElementById("download-btn-js");
+        let jsFile = new Blob([js], {type: "js"});
+        let jsDownloadFile = "script.js";
+        jsLink.target = "_blank";
+        jsLink.href = URL.createObjectURL(jsFile);
+        jsLink.download = jsDownloadFile;
     }
 
 
@@ -63,7 +90,11 @@ function App() {
                 />
             </Split>
             <div className="pane">
-                <a id="download-btn" onClick={downloadFrame}>Download</a>
+                <div className="download-btn-container">
+                    <a id="download-btn-html" onClick={downloadHtml}>HTML</a>
+                    <a id="download-btn-css" onClick={downloadCss}>CSS</a>
+                    <a id="download-btn-js" onClick={downloadJs}>JS</a>
+                </div>
                 <iframe
                     srcDoc={srcDoc}
                     title="output"
