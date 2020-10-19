@@ -96,9 +96,9 @@ function App() {
             </Split>
             <div className="pane">
                 <div className="download-btn-container">
-                    <a id="download-btn-html" onClick={downloadHtml}>HTML</a>
-                    <a id="download-btn-css" onClick={downloadCss}>CSS</a>
-                    <a id="download-btn-js" onClick={downloadJs}>JS</a>
+                    <a href=" " id="download-btn-html" onClick={downloadHtml}>HTML</a>
+                    <a href=" " id="download-btn-css" onClick={downloadCss}>CSS</a>
+                    <a href=" " id="download-btn-js" onClick={downloadJs}>JS</a>
                 </div>
                 <iframe
                     srcDoc={srcDoc}
