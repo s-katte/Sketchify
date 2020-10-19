@@ -12,6 +12,7 @@ body,
 .pane {
     height: 50vh;
     display: flex;
+    position: relative;
 }
 
 .editor-container {
@@ -88,4 +89,19 @@ body,
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     overflow: hidden;
+}
+
+#download-btn{
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    background: rgb(0, 110, 255);
+    color: white;
+    border-radius: 4px;
+    opacity: 0.25;
+    cursor: pointer;
+}
+#download-btn:hover{
+    opacity: 1;
 }

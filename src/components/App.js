@@ -9,6 +9,16 @@ function App() {
     const [js, setJs] = useLocalStorage("js", "");
     const [srcDoc, setSrcDoc] = useState("");
 
+    const downloadFrame = () => {
+        let content = srcDoc;
+        var link = document.getElementById("download-btn");
+        var file = new Blob([content], {type: "html"});
+        var donwloadFile = "index.html";
+        link.href = URL.createObjectURL(file);
+        link.download = donwloadFile;
+    }
+
+
     useEffect(() => {
         const timeout = setTimeout(() => {
             setSrcDoc(`
@@ -53,6 +63,7 @@ function App() {
                 />
             </Split>
             <div className="pane">
+                <a id="download-btn" onClick={downloadFrame}>Download</a>
                 <iframe
                     srcDoc={srcDoc}
                     title="output"
