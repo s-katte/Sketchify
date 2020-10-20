@@ -7,6 +7,7 @@ function App() {
     const [html, setHtml] = useLocalStorage("html", "");
     const [css, setCss] = useLocalStorage("css", "");
     const [js, setJs] = useLocalStorage("js", "");
+    const [title, setTitle] = useState("Untitled")
     const [srcDoc, setSrcDoc] = useState("");
 
     // HTML
@@ -17,7 +18,7 @@ function App() {
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Document</title>
+        <title>${title}</title>
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>${html}</body>
@@ -51,6 +52,7 @@ function App() {
     };
 
     useEffect(() => {
+        document.title = 'Sketchify - '+title
         const timeout = setTimeout(() => {
             setSrcDoc(`
         <html>
@@ -62,7 +64,7 @@ function App() {
         }, 250);
 
         return () => clearTimeout(timeout);
-    }, [html, css, js]);
+    }, [html, css, js, title]);
 
     useEffect(() => {
         window.addEventListener("beforeunload", (ev) => {
@@ -72,49 +74,55 @@ function App() {
     });
 
     return (
-        <Split sizes={[50, 50]} direction="vertical" className="h-100">
-            <Split className="pane top-pane" sizes={[33, 34, 33]}>
-                <Editor
-                    language="xml"
-                    displayName="HTML"
-                    value={html}
-                    onChange={setHtml}
-                />
-                <Editor
-                    language="css"
-                    displayName="CSS"
-                    value={css}
-                    onChange={setCss}
-                />
-                <Editor
-                    language="javascript"
-                    displayName="JS"
-                    value={js}
-                    onChange={setJs}
-                />
-            </Split>
-            <div className="pane">
-                <div className="download-btn-container">
+        <div className="wrap-box">
+            <nav className='nav-bar box1'>
+                <input className='title' id='title-input' placeholder = 'Untitled' onChange={() => setTitle(document.getElementById('title-input').value)} autoComplete='off'/>
+                <div className='logo'>Sketchify</div>
+                <div className='download-btn'>
                     <a href=" " id="download-btn-html" onClick={downloadHtml}>
-                        HTML
+                        <img src={require('../assets/htmllogo.png')} alt="html-logo" className='button' title="Download .html" />
                     </a>
                     <a href=" " id="download-btn-css" onClick={downloadCss}>
-                        CSS
+                        <img src={require('../assets/csslogo.png')} alt="css-logo" className='button' title="Download .css" />
                     </a>
                     <a href=" " id="download-btn-js" onClick={downloadJs}>
-                        JS
+                        <img src={require('../assets/jslogo.png')} alt="js-logo" className='button' title="Download .js" />
                     </a>
                 </div>
-                <iframe
-                    srcDoc={srcDoc}
-                    title="output"
-                    sandbox="allow-scripts"
-                    frameBorder="0"
-                    width="100%"
-                    height="100%"
-                />
-            </div>
-        </Split>
+            </nav>
+            <Split sizes={[50, 50]} direction="vertical" className="box2">
+                <Split className="pane top-pane" sizes={[33, 34, 33]}>
+                    <Editor
+                        language="xml"
+                        displayName="HTML"
+                        value={html}
+                        onChange={setHtml}
+                    />
+                    <Editor
+                        language="css"
+                        displayName="CSS"
+                        value={css}
+                        onChange={setCss}
+                    />
+                    <Editor
+                        language="javascript"
+                        displayName="JS"
+                        value={js}
+                        onChange={setJs}
+                    />
+                </Split>
+                <div className="pane">
+                    <iframe
+                        srcDoc={srcDoc}
+                        title="output"
+                        sandbox="allow-scripts"
+                        frameBorder="0"
+                        width="100%"
+                        height="100%"
+                    />
+                </div>
+            </Split>
+        </div>
     );
 }
 
