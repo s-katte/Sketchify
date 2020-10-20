@@ -1,4 +1,4 @@
-<h1 align="center">React-Code-Pen</h1>
+<h1 align="center">Sketchify</h1>
 <p align="center">A Realtime Prototyping and Collaborating Platform</p>
 
 <p align="center">
