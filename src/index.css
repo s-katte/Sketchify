@@ -3,6 +3,7 @@ body,
 #root {
     margin: 0;
     height: 100%;
+    font-family: 'Verdana', sans-serif;
 }
 
 .top-pane {
