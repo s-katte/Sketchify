@@ -77,6 +77,27 @@ body,
     position: relative;
 }
 
+/* Scroll bar */
+::-webkit-scrollbar {
+    width: 8px;
+}  
+
+::-webkit-scrollbar-track {
+    background: #2B2B2B;
+}/*2b 35*/
+
+::-webkit-scrollbar-thumb {
+    background: #626262; 
+}/*62 85*/
+
+::-webkit-scrollbar-thumb:hover {
+    background: #525252; 
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #454545;
+}
+
 .editor-container {
     display: flex;
     flex-direction: column;
