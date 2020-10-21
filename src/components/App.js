@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDownload } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
     const [html, setHtml] = useLocalStorage("html", "");
@@ -12,14 +12,13 @@ function App() {
     const [srcDoc, setSrcDoc] = useState("");
     //Title
     const [title, setTitle] = useState(() => {
-        const value = localStorage.getItem("codepen-clone-title")
+        const value = localStorage.getItem("codepen-clone-title");
         if (value != null) {
-            return value
+            return value;
+        } else {
+            return "";
         }
-        else {
-            return ""
-        }
-    })
+    });
 
     // HTML
     const downloadHtml = () => {
@@ -64,10 +63,10 @@ function App() {
 
     useEffect(() => {
         if (title === "") {
-            document.title = 'Sketchify - Untitled'
+            document.title = "Sketchify - Untitled";
         } else {
-            document.title = 'Sketchify - ' + title
-            localStorage.setItem("codepen-clone-title", title)
+            document.title = "Sketchify - " + title;
+            localStorage.setItem("codepen-clone-title", title);
         }
         const timeout = setTimeout(() => {
             setSrcDoc(`
@@ -91,19 +90,41 @@ function App() {
 
     return (
         <div className="wrap-box">
-            <nav className='nav-bar box1'>
-                <div className='logo'>Sketchify</div>
-                <input className='title' id='title-input' placeholder='Untitled' required="required" value={title} onChange={() => setTitle(document.getElementById('title-input').value)} autoComplete='off' />
-                <div className='download-btn'>
-                    <a href=" " id="download-btn-html" title="Download HTML file" onClick={downloadHtml}>
+            <nav className="nav-bar box1">
+                <div className="logo">Sketchify</div>
+                <input
+                    className="title"
+                    id="title-input"
+                    placeholder="Untitled"
+                    required="required"
+                    value={title}
+                    onChange={() =>
+                        setTitle(document.getElementById("title-input").value)
+                    }
+                    autoComplete="off"
+                />
+                <div className="download-btn">
+                    <a
+                        href=" "
+                        id="download-btn-html"
+                        title="Download HTML file"
+                        onClick={downloadHtml}>
                         <FontAwesomeIcon icon={faDownload} />
                         <div>HTML</div>
                     </a>
-                    <a href=" " id="download-btn-css" title="Download CSS file" onClick={downloadCss}>
+                    <a
+                        href=" "
+                        id="download-btn-css"
+                        title="Download CSS file"
+                        onClick={downloadCss}>
                         <FontAwesomeIcon icon={faDownload} />
                         <div>CSS</div>
                     </a>
-                    <a href=" " id="download-btn-js" title="Download JS file" onClick={downloadJs}>
+                    <a
+                        href=" "
+                        id="download-btn-js"
+                        title="Download JS file"
+                        onClick={downloadJs}>
                         <FontAwesomeIcon icon={faDownload} />
                         <div>JS</div>
                     </a>

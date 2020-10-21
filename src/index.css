@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 
 html,
 body,
@@ -7,24 +7,25 @@ body,
     height: 100%;
 }
 
-*{
-    outline: none
+* {
+    outline: none;
 }
 
 .nav-bar {
     padding: 6px 10px;
-    background-color: #1F2023;
+    background-color: #1f2023;
     border-bottom: #545454 5px solid;
 }
 
-.nav-bar, .download-btn {
+.nav-bar,
+.download-btn {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.download-btn>a {
+.download-btn > a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,39 +33,39 @@ body,
     text-decoration: none;
 }
 
-.download-btn>a>svg>path {
-    fill: #7c7c7c
+.download-btn > a > svg > path {
+    fill: #7c7c7c;
 }
 
-.download-btn>a:hover>svg>path {
-    fill: #ffffff
+.download-btn > a:hover > svg > path {
+    fill: #ffffff;
 }
 
-.download-btn>a:hover>div {
-    color: #ffffff
+.download-btn > a:hover > div {
+    color: #ffffff;
 }
 
-.download-btn>a>div {
-    font-family: 'Rubik';
+.download-btn > a > div {
+    font-family: "Rubik";
     padding-left: 5px;
-    color: #7c7c7c
+    color: #7c7c7c;
 }
 
 .logo {
     font-family: Rubik;
     font-size: 24px;
     font-weight: 600;
-    color: #ffffff
+    color: #ffffff;
 }
 
 .title {
-    font-family: 'Rubik';
+    font-family: "Rubik";
     border-style: hidden;
     font-size: 16px;
-    background-color: #1F2023;
+    background-color: #1f2023;
     color: #ffffff;
     text-align: center;
-    margin:0 0 0 6%
+    margin: 0 0 0 6%;
 }
 
 .top-pane {
@@ -90,12 +91,12 @@ body,
 }
 
 /*30px alloted for nav bar*/
-.wrap-box .box1{
+.wrap-box .box1 {
     flex: 0 1 30px;
 }
 
 /*remaining is alloted for editor and iframe*/
-.wrap-box .box2{
+.wrap-box .box2 {
     flex: 1 1 auto;
 }
 
@@ -105,13 +106,13 @@ body,
     flex-flow: column;
 }
 
-.box2 .box21{
+.box2 .box21 {
     min-height: 10vh;
     max-height: 50vh;
     flex: 1 1 auto;
 }
 
-.box2 .box22{
+.box2 .box22 {
     flex: 1 1 auto;
 }
 
