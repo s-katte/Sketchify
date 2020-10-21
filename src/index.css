@@ -85,11 +85,11 @@ body,
 
 ::-webkit-scrollbar-track {
     background: #2b2b2b;
-} /*2b 35*/
+}
 
 ::-webkit-scrollbar-thumb {
     background: #626262;
-} /*62 85*/
+}
 
 ::-webkit-scrollbar-thumb:hover {
     background: #525252;
