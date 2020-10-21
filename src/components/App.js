@@ -9,17 +9,8 @@ function App() {
     const [html, setHtml] = useLocalStorage("html", "");
     const [css, setCss] = useLocalStorage("css", "");
     const [js, setJs] = useLocalStorage("js", "");
+    const [title, setTitle] = useLocalStorage("title", "");
     const [srcDoc, setSrcDoc] = useState("");
-    //Title
-    const [title, setTitle] = useState(() => {
-        const value = localStorage.getItem("codepen-clone-title");
-        if (value != null) {
-            return value;
-        } else {
-            return "";
-        }
-    });
-
     // HTML
     const downloadHtml = () => {
         let htmlContent = `
