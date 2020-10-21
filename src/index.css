@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 html,
 body,
 #root {
     margin: 0;
     height: 100%;
-    font-family: 'Verdana', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .top-pane {
