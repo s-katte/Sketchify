@@ -2,11 +2,11 @@
 <p align="center">A Realtime Prototyping and Collaborating Platform</p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/issues/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
-    <img src="https://img.shields.io/github/issues-closed/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
-    <img src="https://img.shields.io/github/forks/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
-    <img src="https://img.shields.io/github/stars/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal">
-<!--     <img src="https://img.shields.io/github/license/s-katte/React-Code-Pen?style=flat-square&logo=appveyor&color=teal"> -->
+    <img src="https://img.shields.io/github/issues/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
+    <img src="https://img.shields.io/github/issues-closed/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
+    <img src="https://img.shields.io/github/forks/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
+    <img src="https://img.shields.io/github/stars/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
+<!--     <img src="https://img.shields.io/github/license/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal"> -->
 </p>
 
 ## Features
@@ -28,8 +28,8 @@
 
 ## How to Contribute
 
-Head over to [CONTRIBUTING.md](https://github.com/s-katte/React-Code-Pen/blob/master/CONTRIBUTING.md)
+Head over to [CONTRIBUTING.md](https://github.com/s-katte/Sketchify/blob/master/CONTRIBUTING.md)
 
 ## Preview
 
-![](https://github.com/s-katte/React-Code-Pen/blob/master/Screenshots/ss-1.png)
+![](https://github.com/s-katte/Sketchify/blob/master/Screenshots/ss-1.png)
