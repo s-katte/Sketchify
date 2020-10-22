@@ -101,11 +101,12 @@ function App() {
                     autoComplete="off"
                 />
                 <div className="download-btn">
-                    <a
+                    <div
+                        className="clearCode"
                         onClick={clearEditor}>
                         <FontAwesomeIcon icon={faEraser} />
-                        <div>Clear Editor</div>
-                    </a>
+                        <div>Clear Code</div>
+                    </div>
                     <a
                         href=" "
                         id="download-btn-html"

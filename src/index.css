@@ -35,7 +35,20 @@ body,
     cursor: pointer;
 }
 
+.download-btn > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .download-btn > a > svg > path {
+    fill: #7c7c7c;
+}
+
+.download-btn > div > svg > path {
     fill: #7c7c7c;
 }
 
@@ -43,11 +56,25 @@ body,
     fill: #ffffff;
 }
 
+.download-btn > div:hover > svg > path {
+    fill: #ffffff;
+}
+
 .download-btn > a:hover > div {
     color: #ffffff;
 }
 
+.download-btn > div:hover > div {
+    color: #ffffff;
+}
+
 .download-btn > a > div {
+    font-family: "Rubik";
+    padding-left: 5px;
+    color: #7c7c7c;
+}
+
+.download-btn > div > div {
     font-family: "Rubik";
     padding-left: 5px;
     color: #7c7c7c;
