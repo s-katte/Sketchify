@@ -3,7 +3,7 @@ import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEraser } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
     const [html, setHtml] = useLocalStorage("html", "");
@@ -52,6 +52,12 @@ function App() {
         jsLink.download = jsDownloadFile;
     };
 
+    const clearEditor = () => {
+        setHtml("");
+        setCss("");
+        setJs("");
+    }
+
     useEffect(() => {
         if (title === "") {
             document.title = "Sketchify - Untitled";
@@ -95,6 +101,11 @@ function App() {
                     autoComplete="off"
                 />
                 <div className="download-btn">
+                    <a
+                        onClick={clearEditor}>
+                        <FontAwesomeIcon icon={faEraser} />
+                        <div>Clear Editor</div>
+                    </a>
                     <a
                         href=" "
                         id="download-btn-html"
