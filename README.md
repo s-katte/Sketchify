@@ -6,7 +6,7 @@
     <img src="https://img.shields.io/github/issues-closed/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
     <img src="https://img.shields.io/github/forks/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
     <img src="https://img.shields.io/github/stars/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
-<!--     <img src="https://img.shields.io/github/license/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal"> -->
+    <img src="https://img.shields.io/github/license/s-katte/Sketchify?style=flat-square&logo=appveyor&color=teal">
 </p>
 
 ## Features
