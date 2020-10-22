@@ -124,7 +124,7 @@ function App() {
             <Split sizes={[50, 50]} direction="vertical" className="box2">
                 <Split className="pane top-pane box21" sizes={[33, 34, 33]}>
                     <Editor
-                        language="xml"
+                        language="text/html"
                         displayName="HTML"
                         value={html}
                         onChange={setHtml}

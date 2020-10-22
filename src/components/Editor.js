@@ -1,9 +1,20 @@
 import React from "react";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
+import "codemirror/addon/hint/show-hint.css";
+
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/css/css";
+
+import "codemirror/addon/hint/css-hint";
+import "codemirror/addon/hint/html-hint";
+import "codemirror/addon/hint/javascript-hint";
+
+import "codemirror/addon/hint/show-hint";
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/edit/closetag";
+import "codemirror/addon/lint/lint";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 
 export default function Editor(props) {
@@ -13,19 +24,34 @@ export default function Editor(props) {
         onChange(value);
     }
 
+    function handleKeyDown(editor, event) {
+        if (
+            !editor.state.completionActive &&
+            event.key !== "Shift" &&
+            event.key !== "Enter" &&
+            event.key !== "Tab"
+        ) {
+            editor.showHint({ completeSingle: false });
+        }
+    }
+
     return (
         <div className="editor-container">
             <div className="editor-title">{displayName}</div>
             <ControlledEditor
                 onBeforeChange={handleChange}
+                onKeyDown={handleKeyDown}
                 value={value}
                 className="code-mirror-wrapper"
                 options={{
-                    lineWrapping: true,
-                    lint: true,
                     mode: language,
                     theme: "material",
+                    lineWrapping: true,
+                    lint: true,
                     lineNumbers: true,
+                    autoCloseTags: true,
+                    matchBrackets: true,
+                    autoCloseBrackets: true
                 }}
             />
         </div>
