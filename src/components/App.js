@@ -24,13 +24,13 @@ const introDoc = `<html>
             color: gray; text-align: center; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
         }
       </style>
-    </html>`
+    </html>`;
 
 function App() {
     const [html, setHtml] = useLocalStorage("html", "");
     const [css, setCss] = useLocalStorage("css", "");
     const [js, setJs] = useLocalStorage("js", "");
-    const [title, setTitle] = useLocalStorage("title","");
+    const [title, setTitle] = useLocalStorage("title", "");
     const [srcDoc, setSrcDoc] = useState("");
     // HTML
     const downloadHtml = () => {
@@ -81,8 +81,8 @@ function App() {
         }
 
         if (!(html === "" && css === "" && js === "")) {
-            document.getElementById('iframe').classList.remove('disblock')
-            document.getElementById('intro').classList.add('disblock')
+            document.getElementById("iframe").classList.remove("disblock");
+            document.getElementById("intro").classList.add("disblock");
         }
 
         const timeout = setTimeout(() => {

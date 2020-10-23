@@ -81,18 +81,18 @@ body,
 /* Scroll bar */
 ::-webkit-scrollbar {
     width: 8px;
-}  
+}
 
 ::-webkit-scrollbar-track {
-    background: #2B2B2B;
-}/*2b 35*/
+    background: #2b2b2b;
+} /*2b 35*/
 
 ::-webkit-scrollbar-thumb {
-    background: #626262; 
-}/*62 85*/
+    background: #626262;
+} /*62 85*/
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #525252; 
+    background: #525252;
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -203,7 +203,7 @@ body,
     border-bottom-left-radius: 0.5rem;
     overflow: hidden;
 }
-  
-.disblock{
-    display:none !important
+
+.disblock {
+    display: none !important;
 }
