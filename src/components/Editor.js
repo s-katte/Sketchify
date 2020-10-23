@@ -1,5 +1,5 @@
 import React from "react";
-import CodeMirror from 'codemirror';
+import CodeMirror from "codemirror";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/addon/hint/show-hint.css";
