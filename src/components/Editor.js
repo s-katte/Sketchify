@@ -56,8 +56,10 @@ export default function Editor(props) {
 
     // show suggestion for editor, execept 'text/html' mode editor
     function handleKeyDown(editor, event) {
-        if (!editor.state.completionActive && !LIST_SUGGESTION_TRIGGERLESS_KEY.includes(event.key)
-            && editor.doc.modeOption !== 'text/html'
+        if (
+            !editor.state.completionActive &&
+            !LIST_SUGGESTION_TRIGGERLESS_KEY.includes(event.key) &&
+            editor.doc.modeOption !== "text/html"
         ) {
             editor.showHint({ completeSingle: false });
         }
@@ -65,11 +67,15 @@ export default function Editor(props) {
 
     // show html tag suggestion, only apply when editor mode is 'text/html'
     function completeAfter(editor, pred) {
-        if (!pred || pred()) setTimeout(function() {
-            if (!editor.state.completionActive && editor.doc.modeOption === 'text/html') {
-                editor.showHint({completeSingle: false});
-            }
-        }, 100);
+        if (!pred || pred())
+            setTimeout(function () {
+                if (
+                    !editor.state.completionActive &&
+                    editor.doc.modeOption === "text/html"
+                ) {
+                    editor.showHint({ completeSingle: false });
+                }
+            }, 100);
         return "CodeMirror.Pass";
     }
 
@@ -93,8 +99,8 @@ export default function Editor(props) {
                     indentUnit: 2,
                     tabSize: 2,
                     extraKeys: {
-                        "'<'": completeAfter
-                    }
+                        "'<'": completeAfter,
+                    },
                 }}
             />
         </div>
