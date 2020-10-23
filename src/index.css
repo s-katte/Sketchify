@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Rubik:wght@300&family=Lato:wght@300&display=swap");
 
 html,
 body,
@@ -81,18 +81,18 @@ body,
 /* Scroll bar */
 ::-webkit-scrollbar {
     width: 8px;
-}
+}  
 
 ::-webkit-scrollbar-track {
-    background: #2b2b2b;
-} /*2b 35*/
+    background: #2B2B2B;
+}/*2b 35*/
 
 ::-webkit-scrollbar-thumb {
-    background: #626262;
-} /*62 85*/
+    background: #626262; 
+}/*62 85*/
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #525252;
+    background: #525252; 
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -202,4 +202,8 @@ body,
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     overflow: hidden;
+}
+  
+.disblock{
+    display:none !important
 }
