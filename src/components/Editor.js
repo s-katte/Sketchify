@@ -18,9 +18,33 @@ import "codemirror/addon/lint/lint";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 
 const LIST_SUGGESTION_TRIGGERLESS_KEY = [
-    'Shift', 'Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Control',
-    'Alt', 'Meta', 'CapsLock', 'Backspace', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8',
-    'F9', 'F10', 'F11', 'F12', 'Delete', 'Insert', '.', '<', '-', '=', '+', '-', '*', '/'
+    "Shift",
+    "Enter",
+    "Tab",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "Control",
+    "Alt",
+    "Meta",
+    "CapsLock",
+    "Backspace",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12",
+    "Delete",
+    "Insert",
+    ".",
 ];
 
 export default function Editor(props) {
