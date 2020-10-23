@@ -1,4 +1,5 @@
 import React from "react";
+import CodeMirror from 'codemirror';
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/addon/hint/show-hint.css";
@@ -76,7 +77,7 @@ export default function Editor(props) {
                     editor.showHint({ completeSingle: false });
                 }
             }, 100);
-        return "CodeMirror.Pass";
+        return CodeMirror.Pass;
     }
 
     return (
