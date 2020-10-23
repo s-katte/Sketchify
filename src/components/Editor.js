@@ -17,6 +17,8 @@ import "codemirror/addon/edit/closetag";
 import "codemirror/addon/lint/lint";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 
+const LIST_SUGGESTION_TRIGGERLESS_KEY = ['Shift', 'Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+
 export default function Editor(props) {
     const { language, displayName, value, onChange } = props;
 
@@ -26,10 +28,7 @@ export default function Editor(props) {
 
     function handleKeyDown(editor, event) {
         if (
-            !editor.state.completionActive &&
-            event.key !== "Shift" &&
-            event.key !== "Enter" &&
-            event.key !== "Tab"
+            !editor.state.completionActive && !LIST_SUGGESTION_TRIGGERLESS_KEY.includes(event.key)
         ) {
             editor.showHint({ completeSingle: false });
         }
