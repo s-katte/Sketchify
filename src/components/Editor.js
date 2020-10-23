@@ -20,7 +20,7 @@ import { Controlled as ControlledEditor } from "react-codemirror2";
 const LIST_SUGGESTION_TRIGGERLESS_KEY = [
     'Shift', 'Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Control',
     'Alt', 'Meta', 'CapsLock', 'Backspace', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8',
-    'F9', 'F10', 'F11', 'F12', 'Delete', 'Insert', '.'
+    'F9', 'F10', 'F11', 'F12', 'Delete', 'Insert', '.', '<', '-', '=', '+', '-', '*', '/'
 ];
 
 export default function Editor(props) {
@@ -30,10 +30,23 @@ export default function Editor(props) {
         onChange(value);
     }
 
+    // show suggestion for editor, execept 'text/html' mode editor
     function handleKeyDown(editor, event) {
-        if (!editor.state.completionActive && !LIST_SUGGESTION_TRIGGERLESS_KEY.includes(event.key)) {
+        if (!editor.state.completionActive && !LIST_SUGGESTION_TRIGGERLESS_KEY.includes(event.key)
+            && editor.doc.modeOption !== 'text/html'
+        ) {
             editor.showHint({ completeSingle: false });
         }
+    }
+
+    // show html tag suggestion, only apply when editor mode is 'text/html'
+    function completeAfter(editor, pred) {
+        if (!pred || pred()) setTimeout(function() {
+            if (!editor.state.completionActive && editor.doc.modeOption === 'text/html') {
+                editor.showHint({completeSingle: false});
+            }
+        }, 100);
+        return "CodeMirror.Pass";
     }
 
     return (
@@ -53,6 +66,11 @@ export default function Editor(props) {
                     autoCloseTags: true,
                     matchBrackets: true,
                     autoCloseBrackets: true,
+                    indentUnit: 2,
+                    tabSize: 2,
+                    extraKeys: {
+                        "'<'": completeAfter
+                    }
                 }}
             />
         </div>
