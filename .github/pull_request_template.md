@@ -3,7 +3,7 @@ Thank you for sending the PR! We appreciate you spending the time to work on the
 
 Help us understand your motivation by explaining why you decided to make this change.
 
-You can learn more about contributing to BootBlox here: https://github.com/s-katte/React-Code-Pen/blob/master/CONTRIBUTING.md
+You can learn more about contributing to Sketchify here: https://github.com/s-katte/Sketchify/blob/master/CONTRIBUTING.md
 
 Happy contributing!
 
