@@ -30,9 +30,8 @@ function App() {
     const [html, setHtml] = useLocalStorage("html", "");
     const [css, setCss] = useLocalStorage("css", "");
     const [js, setJs] = useLocalStorage("js", "");
-    const [title, setTitle] = useLocalStorage("title", "");
+    const [title, setTitle] = useLocalStorage("title","");
     const [srcDoc, setSrcDoc] = useState("");
-
     // HTML
     const downloadHtml = () => {
         let htmlContent = `
@@ -79,7 +78,6 @@ function App() {
             document.title = "Sketchify - Untitled";
         } else {
             document.title = "Sketchify - " + title;
-            localStorage.setItem("sketchify-title", title);
         }
 
         if (!(html === "" && css === "" && js === "")) {
@@ -179,7 +177,7 @@ function App() {
                         frameBorder="0"
                         width="100%"
                         height="100%"
-                        class="disblock"
+                        className="disblock"
                     />
                     <iframe
                         srcDoc={introDoc}
