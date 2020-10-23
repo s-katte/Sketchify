@@ -52,7 +52,7 @@ export default function Editor(props) {
                     lineNumbers: true,
                     autoCloseTags: true,
                     matchBrackets: true,
-                    autoCloseBrackets: true
+                    autoCloseBrackets: true,
                 }}
             />
         </div>
