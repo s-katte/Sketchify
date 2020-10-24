@@ -19,7 +19,7 @@ body,
 }
 
 .nav-bar,
-.download-btn {
+.btn-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

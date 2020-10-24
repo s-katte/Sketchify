@@ -100,7 +100,7 @@ function App() {
                     }
                     autoComplete="off"
                 />
-                <div className="download-btn">
+                <div className="btn-container">
                     <div
                         className="clearCode"
                         onClick={clearEditor}>
