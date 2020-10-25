@@ -3,7 +3,28 @@ import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEraser } from "@fortawesome/free-solid-svg-icons";
+
+const introDoc = `<html>
+      <body>
+        <div style="height: 100vh; background-image: radial-gradient(circle, #263238, #212226);">
+        <div style="font-family: 'Lato'" class="intro-text">
+        <h1 style="font-size: 25px">
+        Welcome to <span style="font-family: 'Rubik'; color:#b8b8b8">Sketchify</span>
+        </h1>
+        <p style="font-size: 20px">Give your imagination a head-start!</p>
+        </div></div>
+      </body>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Rubik&display=swap');
+        * {
+            box-sizing: border-box; margin: 0; padding: 0;
+        }
+        .intro-text {
+            color: gray; text-align: center; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+        }
+      </style>
+    </html>`;
 
 function App() {
     const [html, setHtml] = useLocalStorage("html", "");
@@ -52,13 +73,24 @@ function App() {
         jsLink.download = jsDownloadFile;
     };
 
+    const clearEditor = () => {
+        setHtml("");
+        setCss("");
+        setJs("");
+    };
+
     useEffect(() => {
         if (title === "") {
             document.title = "Sketchify - Untitled";
         } else {
             document.title = "Sketchify - " + title;
-            localStorage.setItem("codepen-clone-title", title);
         }
+
+        if (!(html === "" && css === "" && js === "")) {
+            document.getElementById("iframe").classList.remove("disblock");
+            document.getElementById("intro").classList.add("disblock");
+        }
+
         const timeout = setTimeout(() => {
             setSrcDoc(`
         <html>
@@ -94,7 +126,11 @@ function App() {
                     }
                     autoComplete="off"
                 />
-                <div className="download-btn">
+                <div className="btn-container">
+                    <div className="clearCode" onClick={clearEditor}>
+                        <FontAwesomeIcon icon={faEraser} />
+                        <div>Clear Code</div>
+                    </div>
                     <a
                         href=" "
                         id="download-btn-html"
@@ -124,7 +160,7 @@ function App() {
             <Split sizes={[50, 50]} direction="vertical" className="box2">
                 <Split className="pane top-pane box21" sizes={[33, 34, 33]}>
                     <Editor
-                        language="xml"
+                        language="text/html"
                         displayName="HTML"
                         value={html}
                         onChange={setHtml}
@@ -146,6 +182,17 @@ function App() {
                     <iframe
                         srcDoc={srcDoc}
                         title="output"
+                        id="iframe"
+                        sandbox="allow-scripts"
+                        frameBorder="0"
+                        width="100%"
+                        height="100%"
+                        className="disblock"
+                    />
+                    <iframe
+                        srcDoc={introDoc}
+                        title="intro"
+                        id="intro"
                         sandbox="allow-scripts"
                         frameBorder="0"
                         width="100%"
