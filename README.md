@@ -39,4 +39,4 @@ Head over to [CONTRIBUTING.md](https://github.com/s-katte/Sketchify/blob/master/
 
 ## Preview
 
-![](https://github.com/s-katte/Sketchify/blob/master/Screenshots/ss-1.png)
+![](https://github.com/s-katte/Sketchify/blob/master/Screenshots/ss.png)
