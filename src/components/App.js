@@ -77,7 +77,7 @@ function App() {
         setHtml("");
         setCss("");
         setJs("");
-    }
+    };
 
     useEffect(() => {
         if (title === "") {
@@ -127,9 +127,7 @@ function App() {
                     autoComplete="off"
                 />
                 <div className="btn-container">
-                    <div
-                        className="clearCode"
-                        onClick={clearEditor}>
+                    <div className="clearCode" onClick={clearEditor}>
                         <FontAwesomeIcon icon={faEraser} />
                         <div>Clear Code</div>
                     </div>
