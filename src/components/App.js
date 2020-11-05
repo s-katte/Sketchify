@@ -4,6 +4,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faEraser } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const introDoc = `<html>
       <body>
@@ -200,6 +201,15 @@ function App() {
                     />
                 </div>
             </Split>
+            <a
+                href="https://github.com/s-katte/Sketchify"
+                target="_blank" rel="noopener noreferrer"
+                id="github-link"
+                className="text-center"
+            >
+                <FontAwesomeIcon icon={faGithub} />
+                <span>&nbsp;GitHub</span>
+            </a>
         </div>
     );
 }
