@@ -247,7 +247,7 @@ body,
     border-radius: 20px;
     transition: all 1s;
 }
-#github-link:before{
+#github-link:before {
     content: "";
     border: 1px;
     position: absolute;
@@ -256,16 +256,20 @@ body,
     height: 20px;
     opacity: 0;
     transition: 0.8s all;
-    transition-delay: 0.10ms;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 80%);
+    transition-delay: 0.1ms;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0) 80%
+    );
 }
 #github-link:hover {
     transform: translateY(-5px);
 }
-#github-link:hover{
+#github-link:hover {
     transform: translateY(-5px);
 }
-#github-link:hover:before{
+#github-link:hover:before {
     opacity: 1;
     transform: translateY(5px);
 }

@@ -203,10 +203,10 @@ function App() {
             </Split>
             <a
                 href="https://github.com/s-katte/Sketchify"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 id="github-link"
-                className="text-center"
-            >
+                className="text-center">
                 <FontAwesomeIcon icon={faGithub} />
                 <span>&nbsp;GitHub</span>
             </a>
