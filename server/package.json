@@ -1,0 +1,11 @@
+{
+  "name": "sketchify_server",
+  "version": "1.0.0",
+  "description": "A server to handle requess from Sketchofy client",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shubham Katte",
+  "license": "MIT"
+}
