@@ -19,7 +19,8 @@
         "react-dom": "^16.13.1",
         "react-jqueryui": "^0.1.0",
         "react-scripts": "3.4.3",
-        "react-split": "^2.0.9"
+        "react-split": "^2.0.9",
+        "websocket": "^1.0.28"
     },
     "scripts": {
         "start": "react-scripts start",
