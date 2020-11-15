@@ -14,13 +14,15 @@
         "jquery": "^3.5.1",
         "netlify-cli": "^2.65.7",
         "prettier": "2.1.2",
+        "query-string": "^6.13.7",
         "react": "^16.13.1",
         "react-codemirror2": "^7.2.1",
         "react-dom": "^16.13.1",
         "react-jqueryui": "^0.1.0",
+        "react-modal": "^3.11.2",
         "react-scripts": "3.4.3",
         "react-split": "^2.0.9",
-        "websocket": "^1.0.28"
+        "socket.io-client": "^3.0.1"
     },
     "scripts": {
         "start": "react-scripts start",

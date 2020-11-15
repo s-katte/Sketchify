@@ -3,8 +3,10 @@ import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faEraser } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEraser, faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import Modal from "react-modal";
+import queryString from 'query-string';
 
 const introDoc = `<html>
       <body>
@@ -27,12 +29,32 @@ const introDoc = `<html>
       </style>
     </html>`;
 
+const customStyles = {
+    content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+    }
+};
+
 function App() {
     const [html, setHtml] = useLocalStorage("html", "");
     const [css, setCss] = useLocalStorage("css", "");
     const [js, setJs] = useLocalStorage("js", "");
     const [title, setTitle] = useLocalStorage("title", "");
     const [srcDoc, setSrcDoc] = useState("");
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    function openModal() {
+        setModalIsOpen(true);
+    }
+
+    function closeModal() {
+        setModalIsOpen(false);
+    }
     // HTML
     const downloadHtml = () => {
         let htmlContent = `
@@ -79,6 +101,10 @@ function App() {
         setCss("");
         setJs("");
     };
+
+    // useEffect(() => {
+    //     console.log(location);
+    // }, [location.search])
 
     useEffect(() => {
         if (title === "") {
@@ -156,7 +182,25 @@ function App() {
                         <FontAwesomeIcon icon={faDownload} />
                         <div>JS</div>
                     </a>
+                    <button onClick={openModal}>
+                        <FontAwesomeIcon icon={faUserFriends} />
+                    </button>
                 </div>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    Want to collaborate?
+                    <form action="" method="GET">
+                        <input name="name" placeholder="Enter your name" />
+                        <input name="room" placeholder="Enter room name" />
+                        <input type="submit" value="submit" />
+                    </form>
+                    <button onClick={closeModal}>Cancel</button>
+                    
+                </Modal>
             </nav>
             <Split sizes={[50, 50]} direction="vertical" className="box2">
                 <Split className="pane top-pane box21" sizes={[33, 34, 33]}>
