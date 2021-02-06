@@ -15,13 +15,22 @@ const ColabForm = () => {
 
     const createRoom = (e) => {
         e.preventDefault();
-        console.log(socket);
 
         socket.emit("join", { username, room: roomname }, (error) => {
             if (error) setError(error);
             else {
                 setSuccess(true);
                 setTimeout(() => history.push("/colab-app"), 2000);
+            }
+        });
+    };
+
+    const joinRoom = (e) => {
+        e.preventDefault();
+        socket.emit("join", { username, room: roomname }, (error) => {
+            if (error) setError(error);
+            else {
+                history.push("/colab-app");
             }
         });
     };
@@ -35,7 +44,8 @@ const ColabForm = () => {
             <div className="colab-container">
                 <h1>Colab form</h1>
                 {(join && (
-                    <form>
+                    <form onSubmit={joinRoom}>
+                        {error && <h3>{error}</h3>}
                         <input
                             type="text"
                             id="username"
