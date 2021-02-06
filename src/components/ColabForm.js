@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useSocket } from "../contexts/SocketContext";
 import { useHistory } from "react-router-dom";
@@ -7,14 +7,28 @@ const ColabForm = () => {
     const [join, setJoin] = useState(true);
     const [username, setUsername] = useLocalStorage("username", "");
     const [roomname, setRoomname] = useLocalStorage("roomname", "");
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
+
     const { socket } = useSocket();
     const history = useHistory();
 
     const createRoom = (e) => {
         e.preventDefault();
         console.log(socket);
-        history.push("/colab-app");
+
+        socket.emit("join", { username, room: roomname }, (error) => {
+            if (error) setError(error);
+            else {
+                setSuccess(true);
+                setTimeout(() => history.push("/colab-app"), 2000);
+            }
+        });
     };
+
+    useEffect(() => {
+        socket.on("message", (data) => console.log(data));
+    }, []);
 
     return (
         <>
@@ -46,6 +60,13 @@ const ColabForm = () => {
                     </form>
                 )) || (
                     <form onSubmit={createRoom}>
+                        {error && <h3>{error}</h3>}
+                        {success && (
+                            <h3>
+                                The room {roomname} is created successfully!!
+                                joining you in 2 short seconds!
+                            </h3>
+                        )}
                         <input
                             type="text"
                             id="username"

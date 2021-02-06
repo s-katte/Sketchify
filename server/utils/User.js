@@ -10,7 +10,7 @@ const addUser = ({ id, name, room }) => {
     );
 
     if (!name || !room) return { error: "Username and room are required." };
-    if (existingUser) return { error: "Username already exists." };
+    if (existingUser) return { error: "Username already exists in this room." };
 
     const user = { id, name, room };
 

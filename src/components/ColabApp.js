@@ -6,6 +6,8 @@ const ColabApp = () => {
 
     useEffect(() => {
         console.log(socket);
+
+        return () => socket.emit("disconnect");
     });
 
     return (
