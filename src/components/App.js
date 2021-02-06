@@ -3,9 +3,12 @@ import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faEraser } from "@fortawesome/free-solid-svg-icons";
+import {
+    faDownload,
+    faEraser,
+    faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import socketIoClient from "socket.io-client";
 
 const introDoc = `<html>
       <body>
@@ -113,13 +116,6 @@ function App() {
         });
     });
 
-    useEffect(() => {
-        const socket = socketIoClient("http://127.0.0.1:8000");
-        socket.on("connection", (s) => {
-            console.log(s.handshake.query);
-        });
-    }, []);
-
     return (
         <div className="wrap-box">
             <nav className="nav-bar box1">
@@ -163,6 +159,13 @@ function App() {
                         onClick={downloadJs}>
                         <FontAwesomeIcon icon={faDownload} />
                         <div>JS</div>
+                    </a>
+                    <a
+                        href="/colabDetails"
+                        id="collaborate-btn"
+                        title="Collaborate">
+                        <FontAwesomeIcon icon={faUsers} />
+                        <div>Collaborate</div>
                     </a>
                 </div>
             </nav>

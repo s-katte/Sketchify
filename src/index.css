@@ -273,3 +273,12 @@ body,
     opacity: 1;
     transform: translateY(5px);
 }
+
+/* Colab Form */
+.colab-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
