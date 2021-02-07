@@ -7,7 +7,13 @@ const io = require("socket.io")(http, {
     },
 });
 const cors = require("cors");
-const { addUser, getUser, getUsersInRoom } = require("./utils/User");
+const {
+    addUser,
+    getUser,
+    getUsersInRoom,
+    getAllData,
+    removeUser,
+} = require("./utils/User");
 
 const corsOpts = {
     origin: "*",
@@ -27,18 +33,38 @@ io.on("connection", (socket) => {
         }); // add user with socket id and room info
 
         if (error) return callback(error);
-        console.log(getUsersInRoom(room));
+        // console.log(getUsersInRoom(room));
 
         socket.emit("message", {
             user: "adminX",
             text: `${user.name.toUpperCase()}, Welcome to ${user.room} room.`,
         });
 
+        socket.to(room).emit("message", {
+            user: "adminX",
+            text: `${user.name.toUpperCase()} has joined the room.`,
+        });
+
         callback();
     });
 
-    socket.on("disconnect", (reason) => {
-        console.log("user disconnected", reason);
+    socket.on("leave-room", (data) => {
+        socket.leave(data.roomname);
+        removeUser(socket.id);
+        console.log("LEAVING:", getAllData());
+    });
+
+    socket.on("data-to-room", (data) => {
+        console.log("ADAPTER", socket.adapter.rooms);
+        console.log("USERNAME", data.username, socket.id);
+        console.log("USEDATA", getUsersInRoom(data.roomname));
+        // console.log(data);
+        // socket.to(data.roomname).emit("msg", "msg msg");
+        const allInRoom = getUsersInRoom(data.roomname);
+        allInRoom.map((user) => {
+            if (user.name != data.username)
+                socket.to(user.id).emit("msg", data);
+        });
     });
 });
 
