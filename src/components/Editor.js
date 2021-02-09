@@ -49,12 +49,20 @@ const LIST_SUGGESTION_TRIGGERLESS_KEY = [
 ];
 
 export default function Editor(props) {
-    const { language, displayName, value, onChange } = props;
+    const {
+        language,
+        displayName,
+        value,
+        onChange,
+        refer,
+        performSend,
+    } = props;
 
+    // ref = useRef(null);
     function handleChange(editor, data, value) {
+        // console.log("CHANGE:", editor, data, value);
         onChange(value);
     }
-
     // show suggestion for editor, execept 'text/html' mode editor
     function handleKeyDown(editor, event) {
         if (
@@ -65,6 +73,10 @@ export default function Editor(props) {
             editor.showHint({ completeSingle: false });
         }
     }
+
+    const handleKeyUp = () => {
+        performSend();
+    };
 
     // show html tag suggestion, only apply when editor mode is 'text/html'
     function completeAfter(editor, pred) {
@@ -88,6 +100,8 @@ export default function Editor(props) {
                 onKeyDown={handleKeyDown}
                 value={value}
                 className="code-mirror-wrapper"
+                onKeyUp={handleKeyUp}
+                ref={refer}
                 options={{
                     mode: language,
                     theme: "material",

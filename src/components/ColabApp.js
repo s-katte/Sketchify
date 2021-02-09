@@ -1,4 +1,15 @@
-import React, { useState, useEffect } from "react";
+// import React, { useEffect } from "react";
+
+// const ColabApp = () => {
+//     return (
+//         <>
+//             <h1>Colab App</h1>
+//         </>
+//     );
+// };
+
+// export default ColabApp;
+import React, { useState, useEffect, useRef } from "react";
 import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
@@ -9,6 +20,7 @@ import {
     faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { useSocket } from "../contexts/SocketContext";
 
 const introDoc = `<html>
       <body>
@@ -31,12 +43,22 @@ const introDoc = `<html>
       </style>
     </html>`;
 
-function App() {
-    const [html, setHtml] = useLocalStorage("html", "");
-    const [css, setCss] = useLocalStorage("css", "");
-    const [js, setJs] = useLocalStorage("js", "");
-    const [title, setTitle] = useLocalStorage("title", "");
+function ColabApp() {
+    // const [html, setHtml] = useLocalStorage("html", "");
+    // const [css, setCss] = useLocalStorage("css", "");
+    // const [js, setJs] = useLocalStorage("js", "");
+    // const [title, setTitle] = useLocalStorage("title", "");
+    const [username] = useLocalStorage("username", "");
+    const [roomname] = useLocalStorage("roomname", "");
+    const [html, setHtml] = useState("");
+    const [css, setCss] = useState("");
+    const [js, setJs] = useState("");
+    const [title, setTitle] = useState("");
     const [srcDoc, setSrcDoc] = useState("");
+    const { socket } = useSocket();
+    const htmlEditor = useRef(null);
+    const cssEditor = useRef(null);
+    const jsEditor = useRef(null);
     // HTML
     const downloadHtml = () => {
         let htmlContent = `
@@ -84,6 +106,14 @@ function App() {
         setJs("");
     };
 
+    socket.on("msg", (data) => {
+        setHtml(data.html);
+        setCss(data.css);
+        setJs(data.js);
+        setTitle(data.title);
+        console.log("FROM", data.username);
+    });
+
     useEffect(() => {
         if (title === "") {
             document.title = "Sketchify - Untitled";
@@ -95,7 +125,6 @@ function App() {
             document.getElementById("iframe").classList.remove("disblock");
             document.getElementById("intro").classList.add("disblock");
         }
-
         const timeout = setTimeout(() => {
             setSrcDoc(`
         <html>
@@ -112,10 +141,25 @@ function App() {
     useEffect(() => {
         window.addEventListener("beforeunload", (ev) => {
             ev.preventDefault();
-            return (ev.returnValue = "Changes you made will not be saved.");
+            return (
+                (ev.returnValue = "Changes you made will not be saved."),
+                socket.emit("leave-room", { roomname })
+            );
         });
     });
 
+    const sendData = () => {
+        console.log("sending", htmlEditor.current.props.value);
+
+        socket.emit("data-to-room", {
+            roomname,
+            username,
+            title,
+            html: htmlEditor.current.props.value,
+            css: cssEditor.current.props.value,
+            js: jsEditor.current.props.value,
+        });
+    };
     return (
         <div className="wrap-box">
             <nav className="nav-bar box1">
@@ -174,20 +218,26 @@ function App() {
                     <Editor
                         language="text/html"
                         displayName="HTML"
+                        refer={htmlEditor}
                         value={html}
                         onChange={setHtml}
+                        performSend={sendData}
                     />
                     <Editor
                         language="css"
                         displayName="CSS"
                         value={css}
                         onChange={setCss}
+                        performSend={sendData}
+                        refer={cssEditor}
                     />
                     <Editor
                         language="javascript"
                         displayName="JS"
                         value={js}
                         onChange={setJs}
+                        performSend={sendData}
+                        refer={jsEditor}
                     />
                 </Split>
                 <div className="pane box22">
@@ -225,4 +275,4 @@ function App() {
     );
 }
 
-export default App;
+export default ColabApp;
