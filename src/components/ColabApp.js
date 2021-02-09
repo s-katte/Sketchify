@@ -9,7 +9,7 @@
 // };
 
 // export default ColabApp;
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Editor from "./Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Split from "react-split";
@@ -44,14 +44,21 @@ const introDoc = `<html>
     </html>`;
 
 function ColabApp() {
-    const [html, setHtml] = useLocalStorage("html", "");
-    const [css, setCss] = useLocalStorage("css", "");
-    const [js, setJs] = useLocalStorage("js", "");
-    const [title, setTitle] = useLocalStorage("title", "");
+    // const [html, setHtml] = useLocalStorage("html", "");
+    // const [css, setCss] = useLocalStorage("css", "");
+    // const [js, setJs] = useLocalStorage("js", "");
+    // const [title, setTitle] = useLocalStorage("title", "");
+    const [username] = useLocalStorage("username", "");
+    const [roomname] = useLocalStorage("roomname", "");
+    const [html, setHtml] = useState("");
+    const [css, setCss] = useState("");
+    const [js, setJs] = useState("");
+    const [title, setTitle] = useState("");
     const [srcDoc, setSrcDoc] = useState("");
-    const [username, setUsername] = useLocalStorage("username", "");
-    const [roomname, setRoomname] = useLocalStorage("roomname", "");
     const { socket } = useSocket();
+    const htmlEditor = useRef(null);
+    const cssEditor = useRef(null);
+    const jsEditor = useRef(null);
     // HTML
     const downloadHtml = () => {
         let htmlContent = `
@@ -99,13 +106,13 @@ function ColabApp() {
         setJs("");
     };
 
-    useEffect(() => {
-        socket.on("msg", (data) => {
-            setHtml(data.html);
-            setCss(data.css);
-            setJs(data.js);
-        });
-    }, []);
+    socket.on("msg", (data) => {
+        setHtml(data.html);
+        setCss(data.css);
+        setJs(data.js);
+        setTitle(data.title);
+        console.log("FROM", data.username);
+    });
 
     useEffect(() => {
         if (title === "") {
@@ -118,7 +125,6 @@ function ColabApp() {
             document.getElementById("iframe").classList.remove("disblock");
             document.getElementById("intro").classList.add("disblock");
         }
-
         const timeout = setTimeout(() => {
             setSrcDoc(`
         <html>
@@ -127,18 +133,11 @@ function ColabApp() {
           <script>${js}</script>
         </html>
       `);
-            console.log("this is ");
-            socket.emit("data-to-room", {
-                roomname,
-                username,
-                html,
-                css,
-                js,
-            });
         }, 250);
 
         return () => clearTimeout(timeout);
     }, [html, css, js, title]);
+
     useEffect(() => {
         window.addEventListener("beforeunload", (ev) => {
             ev.preventDefault();
@@ -149,6 +148,18 @@ function ColabApp() {
         });
     });
 
+    const sendData = () => {
+        console.log("sending", htmlEditor.current.props.value);
+
+        socket.emit("data-to-room", {
+            roomname,
+            username,
+            title,
+            html: htmlEditor.current.props.value,
+            css: cssEditor.current.props.value,
+            js: jsEditor.current.props.value,
+        });
+    };
     return (
         <div className="wrap-box">
             <nav className="nav-bar box1">
@@ -207,20 +218,26 @@ function ColabApp() {
                     <Editor
                         language="text/html"
                         displayName="HTML"
+                        refer={htmlEditor}
                         value={html}
                         onChange={setHtml}
+                        performSend={sendData}
                     />
                     <Editor
                         language="css"
                         displayName="CSS"
                         value={css}
                         onChange={setCss}
+                        performSend={sendData}
+                        refer={cssEditor}
                     />
                     <Editor
                         language="javascript"
                         displayName="JS"
                         value={js}
                         onChange={setJs}
+                        performSend={sendData}
+                        refer={jsEditor}
                     />
                 </Split>
                 <div className="pane box22">

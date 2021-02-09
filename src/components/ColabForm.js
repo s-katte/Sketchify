@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useSocket } from "../contexts/SocketContext";
 import { useHistory } from "react-router-dom";
@@ -35,9 +35,7 @@ const ColabForm = () => {
         });
     };
 
-    useEffect(() => {
-        socket.on("message", (data) => console.log(data));
-    }, []);
+    socket.on("message", (data) => console.log(data));
 
     return (
         <>
